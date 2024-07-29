@@ -9,7 +9,7 @@ jobs:
     uses: MarkTopping/gha-reusable-wf-with-oidc/.github/workflows/demo-output.yml@main
     
   Print-Output:
-    runs-on: ubtuntu-latest
+    runs-on: ubuntu-latest
     needs: Call-Workflow
     steps:
       - run: echo "The Output from the reusable workflow is:"  ${{ needs.Call-Workflow.outputs.myOutput }}
