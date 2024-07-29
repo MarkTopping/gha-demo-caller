@@ -1,1 +1,13 @@
+name: Call Workflow which takes inputs
 
+on: 
+  workflow_dispatch:
+
+jobs:
+
+  Call-Workflow:
+    uses: MarkTopping/gha-reusable-wf-with-oidc/.github/workflows/demo-std-inputs.yml@main
+    with:
+      firstName: I'm Peppa
+      lastName: Pig. Oink!
+  
