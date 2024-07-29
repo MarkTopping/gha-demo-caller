@@ -1,4 +1,4 @@
-name: Call Workflow which takes inputs
+name: Call Workflow which provides outputs
 
 on: 
   workflow_dispatch:
