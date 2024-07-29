@@ -13,4 +13,5 @@ jobs:
     needs: Call-Workflow
     steps:
       - run: echo "The Output from the reusable workflow is:"  ${{ needs.Call-Workflow.outputs.myOutput }}
+      - run: echo "The Sensitive Output from the reusable workflow is:"  ${{ needs.Call-Workflow.outputs.mySensitiveOutput }}
     
