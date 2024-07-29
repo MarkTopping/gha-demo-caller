@@ -6,7 +6,7 @@ on:
 jobs:
 
   Call-Workflow:
-    uses: MarkTopping/gha-reusable-wf-with-oidc/.github/workflows/demo-outputs.yml@main
+    uses: MarkTopping/gha-reusable-wf-with-oidc/.github/workflows/demo-output.yml@main
     
   Print-Output:
     runs-on: ubtuntu-latest
