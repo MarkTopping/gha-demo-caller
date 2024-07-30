@@ -1,0 +1,11 @@
+name: Call Privileged Workflow
+
+on:
+  workflow_dispatch
+
+jobs:
+  caller_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call reusable workflow
+        uses: MarkTopping/gha-reusable-wf-with-oidc/.github/workflows/demo-privileged-upload-image.yml@main
