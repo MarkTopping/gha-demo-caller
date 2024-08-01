@@ -16,11 +16,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Hello from Caller WF
-  
+
+  # So when using the reusable workflow at the job level like this, you cannot set an env var.
+  #Call-Auth-WF using Secrets:
+  #  uses: mt-github-testing/privileged-automation/.github/workflows/auth.yml@main
+  #  secrets:
+  #    AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  #    AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  #    AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
   Call-Auth-WF:
-    uses: mt-github-testing/privileged-automation/.github/workflows/auth.yml@main
-    
-    secrets:
-      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    runs-on: ubunto-latest
+    steps: 
+      - name: Auth
+        env:
+          OIDC_SUBJECT: "repo:${{ github.repository }}:workflow:build"
+        uses: mt-github-testing/privileged-automation/.github/workflows/auth.yml@main
+        with:
+          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
