@@ -31,8 +31,9 @@ jobs:
       - name: Auth
         env:
           OIDC_SUBJECT: "repo:${{ github.repository }}:workflow:build"
-        uses: mt-github-testing/privileged-automation/.github/workflows/auth.yml@main
+        uses: azure/login@v1
         with:
-          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          audience: api://AzureADTokenExchange-demo
+          client-id: ${{ inputs.AZURE_CLIENT_ID }}
+          tenant-id: ${{ inputs.AZURE_TENANT_ID }}
+          subscription-id: ${{ inputs.AZURE_SUBSCRIPTION_ID }} 
