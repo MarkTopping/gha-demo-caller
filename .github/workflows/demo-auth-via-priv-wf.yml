@@ -2,12 +2,13 @@ name: Demo - Auth via Privileged WF
 
 on:
   workflow_dispatch:
-    secrets:
-    
 
 permissions:
   id-token: write
   contents: read
+  
+env:
+  OIDC_SUBJECT: "repo:${{ github.repository }}:workflow:build"
 
 jobs:
 
@@ -18,6 +19,7 @@ jobs:
   
   Call-Auth-WF:
     uses: mt-github-testing/privileged-automation/.github/workflows/auth.yml@main
+    
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
