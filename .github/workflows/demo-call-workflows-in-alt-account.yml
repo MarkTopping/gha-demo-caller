@@ -7,4 +7,10 @@ jobs:
   Call-Auth-WF:
     uses: mt-github-testing/privileged-automation/.github/workflows/auth.yml@main
 
+  Call-Deploy-WF:
+    uses: mt-github-testing/privileged-automation/.github/workflows/deploy.yml@main
+
+  Call-Get-Secret-WF:
+    uses: mt-github-testing/privileged-automation/.github/workflows/get-secret.yml@main
+
   
