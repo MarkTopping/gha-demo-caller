@@ -1,0 +1,10 @@
+name: Demo - Call Workflows in Alt Account
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Call-Auth-WF:
+    uses: mt-github-testing/privileged-automation/.github/workflows/auth.yml@main
+
+  
