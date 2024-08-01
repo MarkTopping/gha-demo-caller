@@ -2,6 +2,8 @@ name: Demo - Auth via Privileged WF
 
 on:
   workflow_dispatch:
+    secrets:
+    
 
 permissions:
   id-token: write
@@ -17,6 +19,6 @@ jobs:
   Call-Auth-WF:
     uses: mt-github-testing/privileged-automation/.github/workflows/auth.yml@main
     secrets:
-      client-id: 123 # ${{ secrets.AZURE_CLIENT_ID }}
-      tenant-id: 123 # ${{ secrets.AZURE_TENANT_ID }}
-      subscription-id: 123 # ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
