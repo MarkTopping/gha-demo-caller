@@ -1,0 +1,22 @@
+name: Demo - Auth via Privileged WF
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+
+  Caller-Hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello from Caller WF
+  
+  Call-Auth-WF:
+    uses: mt-github-testing/privileged-automation/.github/workflows/auth.yml@main
+    secrets:
+      client-id: ${{ secrets.AZURE_CLIENT_ID }}
+      tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+      subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
