@@ -1,4 +1,4 @@
-name: Demo - Auth via Privileged WF
+name: Demo - Auth via Privileged WF and export
 
 on:
   workflow_dispatch:
