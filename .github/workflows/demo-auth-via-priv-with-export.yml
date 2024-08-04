@@ -16,6 +16,8 @@ jobs:
 
   Call-Auth-WF:
     uses: mt-github-testing/privileged-automation/.github/workflows/auth-with-log-export.yml@main
+    with: 
+      run_id: ${{ github.run_id }}
     secrets:
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
