@@ -1,0 +1,21 @@
+name: Audit Workflow
+
+on:
+  workflow_run:
+    workflows: ["*"]
+    types:
+      - completed
+
+jobs:
+  log-completion:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log Workflow Completion
+        run: |
+          echo "Workflow completed in repository: ${{ github.event.workflow_run.repository.full_name }}"
+          echo "Workflow name: ${{ github.event.workflow_run.name }}"
+          echo "Workflow run ID: ${{ github.event.workflow_run.id }}"
+          echo "Workflow conclusion: ${{ github.event.workflow_run.conclusion }}"
