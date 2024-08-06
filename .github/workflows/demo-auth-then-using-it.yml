@@ -15,20 +15,12 @@ jobs:
       - run: echo Hello from Caller WF
 
   Call-Auth-WF:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Auth
-        uses: mt-github-testing/privileged-automation/.github/workflows/auth.yml@main
-        with:
-          AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    uses: mt-github-testing/privileged-automation/.github/workflows/auth.yml@main
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         
-      - name: 'Run Azure CLI command'
-        run: |
-          az account show
-          pwd
-          
   Test-If-Still-Authenticated:
     runs-on: ubuntu-latest
     steps:
